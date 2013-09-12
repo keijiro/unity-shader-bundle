@@ -35,6 +35,30 @@ OpenGL ES デバイスでは、シェーダーのコンパイルは実行時に�
 
 この問題を解決するには「共用アセットバンドル」を作成する必要があります。BuildPipeline クラスに用意されている [PushAssetDependencies](http://docs.unity3d.com/Documentation/ScriptReference/BuildPipeline.PushAssetDependencies.html)/[PopAssetDependencies](http://docs.unity3d.com/Documentation/ScriptReference/BuildPipeline.PopAssetDependencies.html) を使って、複数のアセットバンドルの間に依存性を与えるのです。
 
+そして、アプリの起動時に共用アセットバンドルをロードし、シェーダーのウォームアップ (Shader.WarmupAllShaders) を済ませておきます。こうすれば、個々のモデルのアセットバンドルをロードする際に余計な負荷が発生する心配は無くなります。
+
+検証（改良前）
+--------------
+
+本リポジトリには複数の検証用プログラムが含まれています。実装の方法毎にブランチを分けておくようにしました。
+
+まずは、共用アセットバンドルを使わない例です。[tester1 ブランチ](https://github.com/keijiro/unity-shader-bundle/tree/tester1)に格納されています。このプログラムは９個のアセットバンドルを順にロードします。アセットバンドルの中身はシンプルな板きれモデルで、共通のシェーダーを使用しています。
+
+これらのアセットバンドルを構築するプログラムは [exporter1 ブランチ](https://github.com/keijiro/unity-shader-bundle/tree/exporter1)に格納されています。
+
+このプログラムを iPhone 上で実行し、リモートプロファイラで接続してみたところ、下図のような結果になりました。
+
 ![test1](test1.png)
 
+アセットバンドルをロードするタイミングでスパイクが生じていることが分かります。Shader.Parse という関数が主な負荷となっているようです。
+
+検証（改良後）
+--------------
+
+このスパイクを改善すべく、シェーダーのみを格納した共用アセットバンドルを作成することにしました。改良後のアセットバンドル構築プログラムは [exporter2 ブランチ](https://github.com/keijiro/unity-shader-bundle/tree/exporter2)に格納されています。
+
+これも同じくリモートプロファイラで検証してみました。なお、改良後のテストプログラムは [tester2 ブランチ](https://github.com/keijiro/unity-shader-bundle/tree/tester2)にあります。
+
 ![test2](test2.png)
+
+上図のように大きなスパイクは無くなっていることが分かります。もしこのモデルで複数のシェーダーを利用していたならば、この改良の効果はより大きなものとなるでしょう。
