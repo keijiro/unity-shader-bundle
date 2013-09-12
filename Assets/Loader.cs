@@ -27,14 +27,22 @@ public class Loader : MonoBehaviour
     {
 		Caching.CleanCache ();
 
+		var url = baseURL + "/" + GetPlatformDirectoryName () + "/common.unity3d";
+		stateString = "Loading " + url;
+		
+		var www = WWW.LoadFromCacheOrDownload (url, 0);
+		yield return www;
+		www.assetBundle.LoadAll();
+		Shader.WarmupAllShaders ();
+
 		while (true) {
             var objects = new GameObject[9];
 
             for (var i = 0; i < 9; i++) {
-                var url = baseURL + "/" + GetPlatformDirectoryName () + "/panel" + i + ".unity3d";
+                url = baseURL + "/" + GetPlatformDirectoryName () + "/panel" + i + ".unity3d";
                 stateString = "Loading " + url;
 
-                var www = WWW.LoadFromCacheOrDownload (url, 0);
+                www = WWW.LoadFromCacheOrDownload (url, 0);
                 yield return www;
 
                 objects [i] = Instantiate (www.assetBundle.mainAsset, GetIndexedPosition (i), transform.rotation) as GameObject;

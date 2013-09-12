@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b412ddf3ba8145398d24f587db9a840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseURL: https://github.com/keijiro/unity-shader-bundle/raw/data1
+  baseURL: https://github.com/keijiro/unity-shader-bundle/raw/data2
   labelStyle:
     m_Name: 
     m_Normal:
