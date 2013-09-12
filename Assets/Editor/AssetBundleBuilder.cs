@@ -35,19 +35,18 @@ public class AssetBundleBuilder
         }
 
         var prefab = AssetDatabase.LoadMainAssetAtPath ("Assets/Quad.prefab") as GameObject;
-        var uanimValue = prefab.renderer.sharedMaterial.GetVector ("_UAnim");
-        var vanimValue = prefab.renderer.sharedMaterial.GetVector ("_VAnim");
 
         for (var i = 0; i < 9; i++) {
-            prefab.renderer.sharedMaterial.SetVector ("_UAnim", RandomParameter ());
-            prefab.renderer.sharedMaterial.SetVector ("_VAnim", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_UAnimR", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_VAnimR", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_UAnimG", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_VAnimG", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_UAnimB", RandomParameter ());
+            prefab.renderer.sharedMaterial.SetVector ("_VAnimB", RandomParameter ());
 
             var path = System.IO.Path.Combine (destination, "panel" + i + ".unity3d");
             var options = BuildAssetBundleOptions.CollectDependencies | BuildAssetBundleOptions.CompleteAssets;
             BuildPipeline.BuildAssetBundle (prefab, new Object[] {prefab}, path, options, CurrentPlatform);
         }
-
-        prefab.renderer.sharedMaterial.SetVector ("_UAnim", uanimValue);
-        prefab.renderer.sharedMaterial.SetVector ("_VAnim", vanimValue);
     }
 }
