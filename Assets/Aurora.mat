@@ -39,6 +39,30 @@ Material:
     m_Colors:
       data:
         first:
+          name: _UAnimR
+        second: {r: 2.72832298, g: .172087491, b: 1.42799711, a: 1.44320047}
+      data:
+        first:
+          name: _VAnimR
+        second: {r: 1.49295449, g: .201572612, b: 1.29244661, a: 1.35075474}
+      data:
+        first:
+          name: _UAnimG
+        second: {r: 1.27482796, g: .21562089, b: 1.06149483, a: .522953629}
+      data:
+        first:
+          name: _VAnimG
+        second: {r: 1.15014172, g: .201956525, b: 2.84475875, a: 1.41266859}
+      data:
+        first:
+          name: _UAnimB
+        second: {r: 2.31874394, g: .240748227, b: 1.27881742, a: 1.19890428}
+      data:
+        first:
+          name: _VAnimB
+        second: {r: 2.53965545, g: .293805301, b: 1.72085643, a: .899681687}
+      data:
+        first:
           name: _UAnim
         second: {r: 2.72261977, g: .186837196, b: 2.26687908, a: .957630992}
       data:
@@ -49,27 +73,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _UAnimR
-        second: {r: 2.84589863, g: .114698291, b: 1.81222129, a: .982914805}
-      data:
-        first:
-          name: _VAnimR
-        second: {r: 2.99222565, g: .252301335, b: 2.6485374, a: 1.20514393}
-      data:
-        first:
-          name: _UAnimG
-        second: {r: 1.27096081, g: .165575325, b: 2.9228816, a: .681319237}
-      data:
-        first:
-          name: _VAnimG
-        second: {r: 2.79153609, g: .297955453, b: 1.9401648, a: 1.4721477}
-      data:
-        first:
-          name: _UAnimB
-        second: {r: 2.34006572, g: .212043256, b: 2.69107056, a: 1.24191844}
-      data:
-        first:
-          name: _VAnimB
-        second: {r: 2.76453114, g: .124190256, b: 1.860008, a: 1.41768348}

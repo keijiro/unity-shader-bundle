@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -34,7 +34,7 @@ public class AssetBundleBuilder
             return;
         }
 
-        var prefab = AssetDatabase.LoadMainAssetAtPath ("Assets/Quad.prefab") as GameObject;
+        var prefab = AssetDatabase.LoadMainAssetAtPath ("Assets/Plane.prefab") as GameObject;
 
         for (var i = 0; i < 9; i++) {
             prefab.renderer.sharedMaterial.SetVector ("_UAnimR", RandomParameter ());
