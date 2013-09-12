@@ -25,7 +25,9 @@ public class Loader : MonoBehaviour
 
     IEnumerator Start ()
     {
-        while (true) {
+		Caching.CleanCache ();
+
+		while (true) {
             var objects = new GameObject[9];
 
             for (var i = 0; i < 9; i++) {
@@ -35,7 +37,7 @@ public class Loader : MonoBehaviour
                 var www = WWW.LoadFromCacheOrDownload (url, 0);
                 yield return www;
 
-                objects [i] = Instantiate (www.assetBundle.mainAsset, GetIndexedPosition (i), Quaternion.identity) as GameObject;
+                objects [i] = Instantiate (www.assetBundle.mainAsset, GetIndexedPosition (i), transform.rotation) as GameObject;
 
                 yield return new WaitForSeconds (0.5f);
 
